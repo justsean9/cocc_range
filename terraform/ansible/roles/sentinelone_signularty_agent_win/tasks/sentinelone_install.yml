@@ -1,0 +1,13 @@
+---
+
+- name: Copy sentinleone singularty agent 
+  win_copy:
+    src: "../../apps/{{ windows_servers.sentinelone_windows_agent }}"
+    dest: c:\temp\WindowsSensor.exe
+
+- name: install sentinelone singularty agent 
+  win_command: 'C:\Temp\WindowsSensor.exe -q -t {{ general.sentinelone_customer_ID }}'
+
+- name: reboot | Rebooting Server
+  win_reboot:
+  

@@ -24,13 +24,14 @@ RUN python3.12 -m pip install --upgrade setuptools wheel
 
 RUN python3.12 -m pip install --upgrade pip
 
-RUN python3.12 -m pip install --upgrade awscli azure-cli
+RUN python3.12 -m pip install --upgrade awscli azure-cli 
 
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && apt-get update -y && apt-get install google-cloud-cli -y
 
-RUN git clone https://github.com/splunk/attack_range.git
-
+# Instead of cloning, we'll copy our local code
 WORKDIR /attack_range
+COPY . /attack_range/
 
+# Install dependencies
 RUN python3.12 -m pip install -r requirements.txt
 

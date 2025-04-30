@@ -1,0 +1,11 @@
+---
+
+- name: Copy dummy files
+  win_copy:
+    src: "../../sample_files/"
+    dest: c:\Users\Administrator\Desktop
+
+- name: Copy malware files
+  win_copy:
+    src: "../../badfiles/"
+    dest: c:\Users\Administrator\Downloads
