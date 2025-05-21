@@ -74,21 +74,21 @@ resource "azurerm_virtual_machine" "splunk" {
   provisioner "local-exec" {
     working_dir = "../ansible"
     command = <<-EOT
-      cat > vars/splunk_vars.json << 'EOF'
-      {
-        "ansible_python_interpreter": "/usr/bin/python3",
-        "general": ${jsonencode(var.general)},
-        "azure": ${jsonencode(var.azure)},
-        "splunk_server": ${jsonencode(var.splunk_server)},
-        "phantom_server": ${jsonencode(var.phantom_server)},
-        "kali_server": ${jsonencode(var.kali_server)},
-        "simulation": ${jsonencode(var.simulation)},
-        "zeek_server": ${jsonencode(var.zeek_server)},
-        "snort_server": ${jsonencode(var.snort_server)},
-        "windows_servers": ${jsonencode(var.windows_servers)},
-        "linux_servers": ${jsonencode(var.linux_servers)},
-      }
-      EOF
+      cat > vars/splunk_vars.json <<EOF
+{
+  "ansible_python_interpreter": "/usr/bin/python3",
+  "general": ${jsonencode(var.general)},
+  "azure": ${jsonencode(var.azure)},
+  "splunk_server": ${jsonencode(var.splunk_server)},
+  "phantom_server": ${jsonencode(var.phantom_server)},
+  "kali_server": ${jsonencode(var.kali_server)},
+  "simulation": ${jsonencode(var.simulation)},
+  "zeek_server": ${jsonencode(var.zeek_server)},
+  "snort_server": ${jsonencode(var.snort_server)},
+  "windows_servers": ${jsonencode(var.windows_servers)},
+  "linux_servers": ${jsonencode(var.linux_servers)}
+}
+EOF
     EOT
   }
 

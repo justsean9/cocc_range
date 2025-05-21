@@ -108,21 +108,21 @@ resource "aws_instance" "splunk-server" {
   provisioner "local-exec" {
     working_dir = "../ansible"
     command = <<-EOT
-      cat > vars/splunk_vars.json << 'EOF'
-      {
-        "ansible_python_interpreter": "/usr/bin/python3",
-        "general": ${jsonencode(var.general)},
-        "aws": ${jsonencode(var.aws)},
-        "splunk_server": ${jsonencode(var.splunk_server)},
-        "phantom_server": ${jsonencode(var.phantom_server)},
-        "simulation": ${jsonencode(var.simulation)},
-        "kali_server": ${jsonencode(var.kali_server)},
-        "zeek_server": ${jsonencode(var.zeek_server)},
-        "windows_servers": ${jsonencode(var.windows_servers)},
-        "linux_servers": ${jsonencode(var.linux_servers)},
-        "snort_server": ${jsonencode(var.snort_server)}
-      }
-      EOF
+      cat > vars/splunk_vars.json <<EOF
+{
+  "ansible_python_interpreter": "/usr/bin/python3",
+  "general": ${jsonencode(var.general)},
+  "aws": ${jsonencode(var.aws)},
+  "splunk_server": ${jsonencode(var.splunk_server)},
+  "phantom_server": ${jsonencode(var.phantom_server)},
+  "simulation": ${jsonencode(var.simulation)},
+  "kali_server": ${jsonencode(var.kali_server)},
+  "zeek_server": ${jsonencode(var.zeek_server)},
+  "windows_servers": ${jsonencode(var.windows_servers)},
+  "linux_servers": ${jsonencode(var.linux_servers)},
+  "snort_server": ${jsonencode(var.snort_server)}
+}
+EOF
     EOT
   }
 
