@@ -74,7 +74,7 @@ resource "azurerm_virtual_machine" "splunk" {
   provisioner "local-exec" {
     working_dir = "../ansible"
     command = <<-EOT
-      cat <<EOF > vars/splunk_vars.json
+      cat > vars/splunk_vars.json << 'EOF'
       {
         "ansible_python_interpreter": "/usr/bin/python3",
         "general": ${jsonencode(var.general)},
